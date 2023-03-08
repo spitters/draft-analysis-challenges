@@ -9,7 +9,7 @@ Expires: 9 September 2023
 
 
   Challenges, Opportunities, and Directions for Formal Analysis in the
-                                  IETF
+                             IETF and IRTF
                     draft-analysis-challenges-latest
 
 Abstract
@@ -60,11 +60,11 @@ Table of Contents
    1.  Introduction
    2.  Conventions and Definitions
    3.  Analysis Overview
-   4.  Formal Analysis Challenges and Open Problems
+   4.  Analysis Challenges and Open Problems
      4.1.  Timelines
      4.2.  Tooling
      4.3.  Incentives
-     4.4.  Complexity
+     4.4.  Complexity and Precision
      4.5.  Resource Limits
    5.  Security Considerations
    6.  IANA Considerations
@@ -203,12 +203,7 @@ Table of Contents
    of the protocol, with a reference to backing analysis (that did not
    receive peer review) with Tamarin.
 
-   No two analyses are the same in breadth or depth.  The following
-   section describes a number of challenges that lead to this
-   inconsistency, and includes recommendations for IETF contributors to
-   help improve the consistency with which analysis is done.
-
-4.  Formal Analysis Challenges and Open Problems
+4.  Analysis Challenges and Open Problems
 
    This section describes some high level problems that impact the scale
    at which the IETF and IRTF applies formal analysis to technical
@@ -312,14 +307,35 @@ Table of Contents
    The community could work on collecting examples of formal analyses to
    use as guidance in determining the suitable amount of analysis.
 
-4.4.  Complexity
+4.4.  Complexity and Precision
 
-   *  Specifications are complex, leading to large analysis learning
-      curves.
+   Specification complexity is a barrier to analysis.  Complexity makes
+   it challenging to develop an accurate mental model for the problem
+   being solved, which is necessary for defining and refining the threat
+   model and desired security properties of a protocol.  Complexity
+   makes the learning curve steep, deterring otherwise willing
+   contributors from working on the analysis.  Complexity can be dealt
+   with by breaking down specifications into smaller, purpose-specific
+   pieces, where possible.  Beyond helping tame complexity, this might
+   also help enable better reuse of existing analysis results.
+   Complexity might also be dealt with by improving the presentation
+   quality of specifications, e.g., by using consistent vocabulary
+   across related specifications, including more discusson about
+   intuition, and so on.
 
-   *  Specifications are imprecise.  English language is a barrier to
-      non-native speakers.  Although it's good for intuitition, it's not
-      the best for details.
+   Specifications also sometimes suffer from lack of precision.
+   Naturally, as specifications are written in English, they are prone
+   to misinterpretations by different people, especially those for whom
+   English is not a native language.  While prose is useful for
+   describing intution, it is often insufficient for rigorous technical
+   details.  Lack of precision therefore makes analysis difficult since
+   there lacks clarity on what is the exact object or syntax being
+   specified.  Use of more rigorous specification language, e.g.,
+   consistently presented and readable pseudocode, formal grammars,
+   state machine descriptions, etc can all help improve the precision by
+   which specifications are represented.  However, it's worth noting
+   that sometimes precision can increase specification complexity.
+   Balancing these two is not always easy in practice.
 
 4.5.  Resource Limits
 
@@ -411,7 +427,10 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-ietf-mls-
               protocol-17>.
 
-   [OHTTP]    "*** BROKEN REFERENCE ***".
+   [OHTTP]    Thomson, M. and C. A. Wood, "Oblivious HTTP", Work in
+              Progress, Internet-Draft, draft-ietf-ohai-ohttp-06, 15
+              December 2022, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-ohai-ohttp-06>.
 
    [PRIVACYPASS]
               Davidson, A., Iyengar, J., and C. A. Wood, "The Privacy
