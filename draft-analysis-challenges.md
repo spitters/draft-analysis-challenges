@@ -7,10 +7,10 @@ docname: draft-analysis-challenges-latest
 submissiontype: IRTF
 v: 3
 venue:
-  group: UFMRG
-  type: Usable Formal Methods Research Group
-  mail: ufmrg@ietf.org
-  github: chris-wood/draft-analysis-challenges
+#  group: UFMRG
+#  type: Usable Formal Methods Research Group
+#  mail: ufmrg@ietf.org
+  github: "chris-wood/draft-analysis-challenges"
 
 author:
  -
