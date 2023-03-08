@@ -1,0 +1,260 @@
+
+
+
+
+Network Working Group                                         C. A. Wood
+Internet-Draft                                                Cloudflare
+Intended status: Informational                              8 March 2023
+Expires: 9 September 2023
+
+
+  Challenges, Opportunities, and Directions for Formal Analysis in the
+                                  IETF
+                    draft-analysis-challenges-latest
+
+Abstract
+
+   This document discusses challenges, opportunities, and directions for
+   formal analysis of protocols developed in the IETF.
+
+About This Document
+
+   This note is to be removed before publishing as an RFC.
+
+   Status information for this document may be found at
+   https://datatracker.ietf.org/doc/draft-analysis-challenges/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/chris-wood/draft-analysis-challenges.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 9 September 2023.
+
+Copyright Notice
+
+   Copyright (c) 2023 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.
+
+Table of Contents
+
+   1.  Introduction
+   2.  Conventions and Definitions
+   3.  Timelines
+   4.  Tooling
+   5.  Complexity
+   6.  Incentives
+   7.  Scaling
+   8.  Security Considerations
+   9.  IANA Considerations
+   10. References
+     10.1.  Normative References
+     10.2.  Informative References
+   Acknowledgments
+   Author's Address
+
+1.  Introduction
+
+   The IETF and IRTF produce technical specifications for protocols used
+   on the Internet.  Applications use these technical specifications in
+   shipping software.  Often times, use of these technical
+   specifications has a direct impact on end users of the Internet.  As
+   an obvious example, TLS 1.3 [TLS13] is the de-facto transport
+   security protocol used on the Internet, protecting data in transit
+   between different different parties on the Internet.
+
+   The process by which TLS 1.3 was developed was unique for its time.
+   In the wake of one too many security problems with prior versions of
+   the protocol, TLS 1.3 was developed in close collaboration with
+   security researchers to ensure that the resulting design and
+   specification provided provably secure properties that one would
+   expect from such a protocol.  The process took years and resulted in
+   dozens of academic publications and interoperable implementations,
+   further improving the community's confidence in the result.  And in
+   the end, the work paid off: TLS 1.3 has be safely deployed at scale
+   for years without any significant issues.
+
+   Several IETF protocols since TLS 1.3 have built on the process by
+   which it was developed, including QUIC [RFC9000], MLS [MLS],
+   Oblivious HTTP [OHTTP], and Privacy Pass [PRIVACYPASS].  Each of
+   these published and developing specifications have incorporated
+   security analysis into the process by which the specifications are
+   ratified.  However, there are still plenty of examples of technical
+   specifications that lack any sort of formal analysis.
+
+   Lack of formal analysis is problematic for a number of reasons,
+   including, though not limited to, the following:
+
+   1.  Real world vulnerabilities.  Protocol specifiations may be
+       developed with security or privacy vulnerabilities.  Such
+       vulnerabilities can lead to real problems for end users.  In this
+       sense, publishing specifications without formal analysis is akin
+       to testing software in production, yet is uniquely worse since
+       updating specifications requires IETF processes to enact and
+       takes time.
+
+   2.  Specification misuse.  Formal analysis requires a certain degree
+       of precision and rigor in which specifications for algorithms,
+       protocols, and systems are described.  This precision helps
+       refine the interface for these types of objects.  Lack of
+       analysis can therefore lead to misuse of the object.  This can in
+       turn lead to undesired outcomes, including even security
+       vulnerabilities.
+
+   3.  Audience confusion.  Protocol specifications without analysis may
+       lack precision or specificity that often comes from formal
+       analysis, yielding complex documents that are difficult to
+       understand, use, and deploy in practice.
+
+   Lack of formal analysis comes from a variety of reasons.  This
+   document summarizes some of those problems and discusses
+   opportunities for potential solutions and new directions the
+   community can explore to improve the situation.  It is meant to
+   encourage discussion, not be published as an RFC.
+
+2.  Conventions and Definitions
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+3.  Timelines
+
+   *  Mismatched timelines.
+
+   *  Too much work to do in the allotted time frame.  Specifications
+      may have shipping pressure from industry.
+
+   *  Don't want analysis to impede progress
+
+4.  Tooling
+
+   *  Inadequate tooling.
+
+   *  Tooling is inadequate or not fit for purpose.  Moreover, tools
+      often die or are not well maintained.
+
+5.  Complexity
+
+   *  Specifications are complex, leading to large analysis learning
+      curves.
+
+   *  Specifications are imprecise.  English language is a barrier to
+      non-native speakers.  Although it's good for intuitition, it's not
+      the best for details.
+
+6.  Incentives
+
+   *  Lack of incentives.
+
+   *  For researchers, publishing "negative results," i.e., "this
+      protocol is good" is hard to do as no one is really interested in
+      publishing uninteresting results.
+
+      -  What exactly would be published?  The case study?  Code in the
+         model?
+
+   *  For editors, analysis may seem unnecessary ("too simple" or "we
+      wrote security considerations")
+
+      -  "Too trivial" -- some folks may consider analysis to be
+         unnecessary based on the simplicity of a protocol.
+
+      -  Type of analysis is unclear.  Is testing enough?  Security
+         considerations enough?  Pen and paper proof enough?  Security
+         analysis and security considerations mismatch, e.g., HTTP
+         message signatures.  Considerations are not a replacement for
+         analysis.  Need guidance on what type of analysis should be
+         considered appropriate.
+
+7.  Scaling
+
+   *  Limited expertise.
+
+   *  Editors are not experts or analyzers.  Getting people to think
+      abstractly is hard to do.
+
+   *  Experts are limited.  There are only so many Vincents and
+      Karthiks.
+
+8.  Security Considerations
+
+   This document discusses challenges for applying formal analysis to
+   technical specifications produced by the IETF and IRTF.  It does not
+   raise new security considerations.
+
+9.  IANA Considerations
+
+   This document has no IANA actions.
+
+10.  References
+
+10.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+10.2.  Informative References
+
+   [MLS]      Barnes, R., Beurdouche, B., Robert, R., Millican, J.,
+              Omara, E., and K. Cohn-Gordon, "The Messaging Layer
+              Security (MLS) Protocol", Work in Progress, Internet-
+              Draft, draft-ietf-mls-protocol-17, 19 December 2022,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-mls-
+              protocol-17>.
+
+   [OHTTP]    "*** BROKEN REFERENCE ***".
+
+   [PRIVACYPASS]
+              Davidson, A., Iyengar, J., and C. A. Wood, "The Privacy
+              Pass Architecture", Work in Progress, Internet-Draft,
+              draft-ietf-privacypass-architecture-11, 6 March 2023,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-
+              privacypass-architecture-11>.
+
+   [RFC9000]  Iyengar, J., Ed. and M. Thomson, Ed., "QUIC: A UDP-Based
+              Multiplexed and Secure Transport", RFC 9000,
+              DOI 10.17487/RFC9000, May 2021,
+              <https://www.rfc-editor.org/rfc/rfc9000>.
+
+   [TLS13]    Rescorla, E., "The Transport Layer Security (TLS) Protocol
+              Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
+              <https://www.rfc-editor.org/rfc/rfc8446>.
+
+Acknowledgments
+
+   This document was influenced by conversations with many people that
+   led to the UFMRG formation.
+
+Author's Address
+
+   Christopher A. Wood
+   Cloudflare
+   Email: caw@heapingbits.net
