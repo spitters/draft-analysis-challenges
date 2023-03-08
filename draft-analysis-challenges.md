@@ -1,5 +1,5 @@
 ---
-title: "Challenges, Opportunities, and Directions for Formal Analysis in the IETF"
+title: "Challenges, Opportunities, and Directions for Formal Analysis in the IETF and IRTF"
 abbrev: "Formal Analysis Challenges"
 category: info
 
@@ -7,9 +7,6 @@ docname: draft-analysis-challenges-latest
 submissiontype: IRTF
 v: 3
 venue:
-#  group: UFMRG
-#  type: Usable Formal Methods Research Group
-#  mail: ufmrg@ietf.org
   github: "chris-wood/draft-analysis-challenges"
 
 author:
@@ -52,7 +49,7 @@ deployed at scale for years without any significant issues.
 
 Several IETF protocols since TLS 1.3 have built on the process by which it was
 developed, including QUIC {{?RFC9000}}, MLS {{?MLS=I-D.ietf-mls-protocol}},
-Oblivious HTTP {{?OHTTP=I-D.ietf-ohai-oblivious-http}}, and Privacy Pass {{?PRIVACYPASS=I-D.ietf-privacypass-architecture}}.
+Oblivious HTTP {{?OHTTP=I-D.ietf-ohai-ohttp}}, and Privacy Pass {{?PRIVACYPASS=I-D.ietf-privacypass-architecture}}.
 Each of these published and developing specifications have incorporated security
 analysis into the process by which the specifications are ratified.
 
@@ -124,15 +121,11 @@ It additionally points to relevant, peer reviewed formal analysis work that demo
 QUIC {{?QUIC=RFC9000}} lists various types of attacker models and, within each attacker model,
 the types of attacks that are possible. However, unlike {{TLS13}}, does not have backing formal
 analysis for all of claims about attack resistance. As another example, Oblivious
-HTTP {{?OHTTP=I-D.ietf-ohai-ohttp}} takes an even different approach by informally describing
+HTTP {{OHTTP}} takes an even different approach by informally describing
 the threat model and security goals of the protocol, with a reference to backing analysis
 (that did not receive peer review) with Tamarin.
 
-No two analyses are the same in breadth or depth. The following section describes a number of
-challenges that lead to this inconsistency, and includes recommendations for IETF contributors
-to help improve the consistency with which analysis is done.
-
-# Formal Analysis Challenges and Open Problems
+# Analysis Challenges and Open Problems
 
 This section describes some high level problems that impact the scale at which
 the IETF and IRTF applies formal analysis to technical specifications.
@@ -216,12 +209,29 @@ such as TLS also require analysis, but of a different type. The community could
 work on collecting examples of formal analyses to use as guidance in determining
 the suitable amount of analysis.
 
-## Complexity
+## Complexity and Precision
 
+Specification complexity is a barrier to analysis. Complexity makes it challenging
+to develop an accurate mental model for the problem being solved, which is necessary
+for defining and refining the threat model and desired security properties of a
+protocol. Complexity makes the learning curve steep, deterring otherwise willing
+contributors from working on the analysis. Complexity can be dealt with by
+breaking down specifications into smaller, purpose-specific pieces, where possible.
+Beyond helping tame complexity, this might also help enable better reuse of existing
+analysis results. Complexity might also be dealt with by improving the presentation
+quality of specifications, e.g., by using consistent vocabulary across related
+specifications, including more discusson about intuition, and so on.
 
-
-- Specifications are complex, leading to large analysis learning curves.
-- Specifications are imprecise. English language is a barrier to non-native speakers. Although it's good for intuitition, it's not the best for details.
+Specifications also sometimes suffer from lack of precision. Naturally, as specifications
+are written in English, they are prone to misinterpretations by different people, especially
+those for whom English is not a native language. While prose is useful for describing
+intution, it is often insufficient for rigorous technical details. Lack of precision
+therefore makes analysis difficult since there lacks clarity on what is the exact
+object or syntax being specified. Use of more rigorous specification language, e.g.,
+consistently presented and readable pseudocode, formal grammars, state machine
+descriptions, etc can all help improve the precision by which specifications are represented.
+However, it's worth noting that sometimes precision can increase specification
+complexity. Balancing these two is not always easy in practice.
 
 ## Resource Limits
 
