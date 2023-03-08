@@ -52,15 +52,31 @@ Several IETF protocols since TLS 1.3 have built on the process by which it was
 developed, including QUIC {{?RFC9000}}, MLS {{?MLS=I-D.ietf-mls-protocol}},
 Oblivious HTTP {{?OHTTP=I-D.ietf-ohai-oblivious-http}}, and Privacy Pass {{?PRIVACYPASS=I-D.ietf-privacypass-architecture}}.
 Each of these published and developing specifications have incorporated security
-analysis into the process by which the specifications are ratified. However,
-there are still plenty of examples of technical specifications that lack
-any sort of formal analysis.
+analysis into the process by which the specifications are ratified. However, there
+are still plenty of examples of technical specifications that lack any sort of
+formal analysis.
 
-- Not all IETF drafts get analysis before publication
-- Why is this bad? Vulnerbailities. Like testing in production, except without the ability to patch easily.
-- Why is analysis good? Confidence -- see TLS 1.3
-- There are lots of reasons analysis does not scale to IETF protocol specifications. This document summarizes some of those problems and discusses opportunities for potential solutions and new directions the community can explore to improve the situation. It is meant to encourage discussion.
+Lack of formal analysis is problematic for a number of reasons, including, though
+not limited to, the following:
 
+1. Real world vulnerabilities. Protocol specifiations may be developed with security
+   or privacy vulnerabilities. Such vulnerabilities can lead to real problems for
+   end users. In this sense, publishing specifications without formal analysis is
+   akin to testing software in production, yet is uniquely worse since updating
+   specifications requires IETF processes to enact and takes time.
+1. Specification misuse. Formal analysis requires a certain degree of precision and
+   rigor in which specifications for algorithms, protocols, and systems are described.
+   This precision helps refine the interface for these types of objects. Lack of
+   analysis can therefore lead to misuse of the object. This can in turn lead to
+   undesired outcomes, including even security vulnerabilities.
+1. Audience confusion. Protocol specifications without analysis may lack precision
+   or specificity that often comes from formal analysis, yielding complex documents
+   that are difficult to understand, use, and deploy in practice.
+
+Lack of formal analysis comes from a variety of reasons. This document summarizes some
+of those problems and discusses opportunities for potential solutions and new directions
+the community can explore to improve the situation. It is meant to encourage discussion,
+not be published as an RFC.
 
 # Conventions and Definitions
 
@@ -99,8 +115,8 @@ any sort of formal analysis.
 
 # Security Considerations
 
-TODO Security
-
+This document discusses challenges for applying formal analysis to technical specifications
+produced by the IETF and IRTF. It does not raise new security considerations.
 
 # IANA Considerations
 
