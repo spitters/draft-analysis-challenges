@@ -1,24 +1,4 @@
 ---
-###
-# Internet-Draft Markdown Template
-#
-# Rename this file from draft-todo-yourname-protocol.md to get started.
-# Draft name format is "draft-<yourname>-<workgroup>-<name>.md".
-#
-# For initial setup, you only need to edit the first block of fields.
-# Only "title" needs to be changed; delete "abbrev" if your title is short.
-# Any other content can be edited, but be careful not to introduce errors.
-# Some fields will be set automatically during setup if they are unchanged.
-#
-# Don't include "-00" or "-latest" in the filename.
-# Labels in the form draft-<yourname>-<workgroup>-<name>-latest are used by
-# the tools to refer to the current version; see "docname" for example.
-#
-# This template uses kramdown-rfc: https://github.com/cabo/kramdown-rfc
-# You can replace the entire file if you prefer a different format.
-# Change the file extension to match the format (.xml for XML, etc...)
-#
-###
 title: "Challenges, Opportunities, and Directions for Formal Analysis in the IETF"
 abbrev: "Formal Analysis Challenges"
 category: info
@@ -62,7 +42,22 @@ As an obvious example, TLS 1.3 {{?TLS13=RFC8446}} is the de-facto transport secu
 protocol used on the Internet, protecting data in transit between different different
 parties on the Internet.
  
-The process by which TLS 1.3 was developed was unique for its time.
+The process by which TLS 1.3 was developed was unique for its time. In the wake of
+one too many security problems with prior versions of the protocol, TLS 1.3 was
+developed in close collaboration with security researchers to ensure that the resulting
+design and specification provided provably secure properties that one would expect
+from such a protocol. The process took years and resulted in dozens of academic
+publications and interoperable implementations, further improving the community's
+confidence in the result. And in the end, the work paid off: TLS 1.3 has be safely
+deployed at scale for years without any significant issues.
+
+Several IETF protocols since TLS 1.3 have built on the process by which it was
+developed, including QUIC {{?RFC9000}}, MLS {{?MLS=I-D.ietf-mls-protocol}},
+Oblivious HTTP {{?OHTTP=I-D.ietf-ohai-oblivious-http}}, and Privacy Pass {{?PRIVACYPASS=I-D.ietf-privacypass-architecture}}.
+Each of these published and developing specifications have incorporated security
+analysis into the process by which the specifications are ratified. However,
+there are still plenty of examples of technical specifications that lack
+any sort of formal analysis.
  
 - Not all IETF drafts get analysis before publication
 - Why is this bad? Vulnerbailities. Like testing in production, except without the ability to patch easily.
