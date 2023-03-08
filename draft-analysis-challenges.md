@@ -5,7 +5,6 @@ category: info
 
 docname: draft-analysis-challenges-latest
 submissiontype: IRTF
-consensus: true
 v: 3
 venue:
   group: UFMRG
