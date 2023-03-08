@@ -5,8 +5,6 @@ category: info
 
 docname: draft-analysis-challenges-latest
 submissiontype: IRTF
-number:
-date:
 consensus: true
 v: 3
 venue:
@@ -61,7 +59,7 @@ any sort of formal analysis.
  
 - Not all IETF drafts get analysis before publication
 - Why is this bad? Vulnerbailities. Like testing in production, except without the ability to patch easily.
-- Why is analysis good? Confidence --> see TLS 1.3
+- Why is analysis good? Confidence -- see TLS 1.3
 - There are lots of reasons analysis does not scale to IETF protocol specifications. This document summarizes some of those problems and discusses opportunities for potential solutions and new directions the community can explore to improve the situation. It is meant to encourage discussion.
 
 
