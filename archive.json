@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-03-14T00:06:42.622458+00:00",
+  "timestamp": "2023-03-16T00:06:23.368170+00:00",
   "repo": "chris-wood/draft-analysis-challenges",
   "labels": [
     {
@@ -49,6 +49,39 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOJG90R85g011i",
+      "title": "Financial incentives ",
+      "url": "https://github.com/chris-wood/draft-analysis-challenges/issues/1",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Sometimes just paying for analysis, or funding development of tools, is what's needed. This is worth noting.",
+      "createdAt": "2023-03-14T23:39:03Z",
+      "updatedAt": "2023-03-14T23:39:03Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOJG90R85g6FEd",
+      "title": "Protocol aspects that make analysis difficult",
+      "url": "https://github.com/chris-wood/draft-analysis-challenges/issues/2",
+      "state": "OPEN",
+      "author": "chris-wood",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "- External effects of the protocol (BGP induces network changes)\r\n- Time (NTP)\r\n- Branches \r\n- Sub-protocol dependencies and messy abstraction boundaries (unprompted auth depends on TLS exporters)",
+      "createdAt": "2023-03-15T16:15:02Z",
+      "updatedAt": "2023-03-15T16:15:02Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": []
 }
