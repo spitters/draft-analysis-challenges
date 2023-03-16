@@ -231,7 +231,13 @@ object or syntax being specified. Use of more rigorous specification language, e
 consistently presented and readable pseudocode, formal grammars, state machine
 descriptions, etc can all help improve the precision by which specifications are represented.
 However, it's worth noting that sometimes precision can increase specification
-complexity. Balancing these two is not always easy in practice.
+complexity. Balancing these two is not always easy in practice. 
+
+[HACSpec](https://github.com/hacspec/hacspec) is one proposal to address this challenge.
+It is a carefully designed subset of the rust programming language. So, it is familiar 
+to cryptographic engineers, while at the same time it has a precise semantics 
+with translations to [F*](https://www.fstar-lang.org/), 
+[Easycrypt](https://github.com/EasyCrypt/easycrypt) and [Coq](https://coq.inria.fr/).
 
 ## Resource Limits
 
