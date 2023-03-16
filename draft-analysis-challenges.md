@@ -233,6 +233,13 @@ descriptions, etc can all help improve the precision by which specifications are
 However, it's worth noting that sometimes precision can increase specification
 complexity. Balancing these two is not always easy in practice.
 
+[HACSpec](https://github.com/hacspec/hacspec) aims to address this challenge.
+It is a carefully crafted subset of the rust language.
+So, it is familiar to cryptographic engineers. At the same time, this language
+has a precise semantics which has been embedded in [F-star](https://www.fstar-lang.org/),
+[EasyCrypt](https://github.com/EasyCrypt/easycrypt) and [Coq](https://coq.inria.fr/).
+
+
 ## Resource Limits
 
 Analysis is also impeded by a limitation of resources. Formal analysis is not an
